@@ -5,19 +5,18 @@ import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
   BellIcon,
-  CalendarIcon,
-  ChartPieIcon,
   Cog6ToothIcon,
-  DocumentDuplicateIcon,
-  FolderIcon,
+  NewspaperIcon,
+  MusicalNoteIcon,
+  PhotoIcon,
   HomeIcon,
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
-import { Footer } from '../footer';
-import { Header } from '../header';
+// import { Footer } from '../footer';
+// import { Header } from '../header';
 
 interface LayoutPropsInterface {
   children: ReactNode;
@@ -32,10 +31,10 @@ interface LayoutPropsInterface {
 const navigation = [
   { name: 'Home', href: '#', icon: HomeIcon, current: true },
   { name: 'About', href: '#', icon: UsersIcon, current: false },
-  { name: 'Blog', href: '#', icon: FolderIcon, current: false },
-  { name: 'Photography', href: '#', icon: CalendarIcon, current: false },
-  { name: 'Music', href: '#', icon: DocumentDuplicateIcon, current: false },
-  { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  { name: 'Blog', href: '#', icon: NewspaperIcon, current: false },
+  { name: 'Photography', href: '#', icon: PhotoIcon, current: false },
+  { name: 'Music', href: '#', icon: MusicalNoteIcon, current: false },
+  // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ];
 const teams = [
   { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
@@ -384,9 +383,9 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
 
           <main className="py-10">
             <div className="px-4 sm:px-6 lg:px-8">
-              <Header />
+              {/* <Header /> */}
               {children}
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </main>
         </div>
