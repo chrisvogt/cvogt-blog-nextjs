@@ -626,6 +626,7 @@ export type ComponentSeoFilter = {
 export type ComponentSeoLinkingCollections = {
   __typename?: 'ComponentSeoLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  pageAboutCollection?: Maybe<PageAboutCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
@@ -637,6 +638,15 @@ export type ComponentSeoLinkingCollections = {
 export type ComponentSeoLinkingCollectionsEntryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageAboutCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageAboutCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -685,6 +695,21 @@ export type ComponentSeoLinkingCollectionsPagePhotographyCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
+
+export enum ComponentSeoLinkingCollectionsPageAboutCollectionOrder {
+  GreetingAsc = 'greeting_ASC',
+  GreetingDesc = 'greeting_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 export enum ComponentSeoLinkingCollectionsPageBlogPostCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
@@ -942,6 +967,160 @@ export type ImageTransformOptions = {
   resizeStrategy?: InputMaybe<ImageResizeStrategy>;
   /** Desired width in pixels. Defaults to the original image width. */
   width?: InputMaybe<Scalars['Dimension']>;
+};
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAbout = Entry & {
+  __typename?: 'PageAbout';
+  contentfulMetadata: ContentfulMetadata;
+  greeting?: Maybe<Scalars['String']>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<PageAboutLinkingCollections>;
+  seoFields?: Maybe<ComponentSeo>;
+  sys: Sys;
+  thisIsAnotherField?: Maybe<PageAboutThisIsAnotherField>;
+};
+
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAboutGreetingArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAboutInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAboutLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAboutSeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentSeoFilter>;
+};
+
+
+/** The about page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageAbout) */
+export type PageAboutThisIsAnotherFieldArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PageAboutCollection = {
+  __typename?: 'PageAboutCollection';
+  items: Array<Maybe<PageAbout>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageAboutFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageAboutFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageAboutFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  greeting?: InputMaybe<Scalars['String']>;
+  greeting_contains?: InputMaybe<Scalars['String']>;
+  greeting_exists?: InputMaybe<Scalars['Boolean']>;
+  greeting_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  greeting_not?: InputMaybe<Scalars['String']>;
+  greeting_not_contains?: InputMaybe<Scalars['String']>;
+  greeting_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+  thisIsAnotherField_contains?: InputMaybe<Scalars['String']>;
+  thisIsAnotherField_exists?: InputMaybe<Scalars['Boolean']>;
+  thisIsAnotherField_not_contains?: InputMaybe<Scalars['String']>;
+};
+
+export type PageAboutLinkingCollections = {
+  __typename?: 'PageAboutLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PageAboutLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PageAboutOrder {
+  GreetingAsc = 'greeting_ASC',
+  GreetingDesc = 'greeting_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type PageAboutThisIsAnotherField = {
+  __typename?: 'PageAboutThisIsAnotherField';
+  json: Scalars['JSON'];
+  links: PageAboutThisIsAnotherFieldLinks;
+};
+
+export type PageAboutThisIsAnotherFieldAssets = {
+  __typename?: 'PageAboutThisIsAnotherFieldAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PageAboutThisIsAnotherFieldEntries = {
+  __typename?: 'PageAboutThisIsAnotherFieldEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PageAboutThisIsAnotherFieldLinks = {
+  __typename?: 'PageAboutThisIsAnotherFieldLinks';
+  assets: PageAboutThisIsAnotherFieldAssets;
+  entries: PageAboutThisIsAnotherFieldEntries;
+  resources: PageAboutThisIsAnotherFieldResources;
+};
+
+export type PageAboutThisIsAnotherFieldResources = {
+  __typename?: 'PageAboutThisIsAnotherFieldResources';
+  block: Array<PageAboutThisIsAnotherFieldResourcesBlock>;
+  hyperlink: Array<PageAboutThisIsAnotherFieldResourcesHyperlink>;
+  inline: Array<PageAboutThisIsAnotherFieldResourcesInline>;
+};
+
+export type PageAboutThisIsAnotherFieldResourcesBlock = ResourceLink & {
+  __typename?: 'PageAboutThisIsAnotherFieldResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PageAboutThisIsAnotherFieldResourcesHyperlink = ResourceLink & {
+  __typename?: 'PageAboutThisIsAnotherFieldResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PageAboutThisIsAnotherFieldResourcesInline = ResourceLink & {
+  __typename?: 'PageAboutThisIsAnotherFieldResourcesInline';
+  sys: ResourceSys;
 };
 
 /** To create individual blog posts [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageBlogPost) */
@@ -2070,6 +2249,8 @@ export type Query = {
   componentSeo?: Maybe<ComponentSeo>;
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  pageAbout?: Maybe<PageAbout>;
+  pageAboutCollection?: Maybe<PageAboutCollection>;
   pageBlogPost?: Maybe<PageBlogPost>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageHome?: Maybe<PageHome>;
@@ -2165,6 +2346,23 @@ export type QueryEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<EntryFilter>;
+};
+
+
+export type QueryPageAboutArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageAboutCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageAboutOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageAboutFilter>;
 };
 
 
@@ -2486,6 +2684,33 @@ export type AuthorFieldsFragment = { __typename: 'ComponentAuthor', name?: strin
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
+export type PageAboutFieldsFragment = { __typename: 'PageAbout', internalName?: string | null, greeting?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null };
+
+export type PageAboutQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PageAboutQuery = { __typename?: 'Query', pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<(
+      { __typename?: 'PageAbout' }
+      & PageAboutFieldsFragment
+    ) | null> } | null };
+
+export type PageAboutCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PageAboutCollectionQuery = { __typename?: 'Query', pageAboutCollection?: { __typename?: 'PageAboutCollection', items: Array<(
+      { __typename?: 'PageAbout' }
+      & PageAboutFieldsFragment
+    ) | null> } | null };
+
 export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?: (
     { __typename?: 'ComponentAuthor' }
     & AuthorFieldsFragment
@@ -2506,7 +2731,7 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
   ) | null, content?: { __typename?: 'PageBlogPostContent', json: any, links: { __typename?: 'PageBlogPostContentLinks', entries: { __typename?: 'PageBlogPostContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
       { __typename?: 'PageBlogPost' }
       & ReferencePageBlogPostFieldsFragment
     ) | null> } | null };
@@ -2617,7 +2842,7 @@ export type PagePhotoGalleryFieldsFragment = { __typename: 'PagePhotoGallery', i
   ) | null, content?: { __typename?: 'PagePhotoGalleryContent', json: any, links: { __typename?: 'PagePhotoGalleryContentLinks', entries: { __typename?: 'PagePhotoGalleryContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
 
 export type PagePhotoGalleryQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -2721,6 +2946,20 @@ export const SeoFieldsFragmentDoc = gql`
       ...ImageFields
     }
   }
+}
+    `;
+export const PageAboutFieldsFragmentDoc = gql`
+    fragment PageAboutFields on PageAbout {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  greeting
 }
     `;
 export const AuthorFieldsFragmentDoc = gql`
@@ -2944,6 +3183,28 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
+export const PageAboutDocument = gql`
+    query pageAbout($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      ...PageAboutFields
+    }
+  }
+}
+    ${PageAboutFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
+export const PageAboutCollectionDocument = gql`
+    query pageAboutCollection($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 100, locale: $locale, preview: $preview) {
+    items {
+      ...PageAboutFields
+    }
+  }
+}
+    ${PageAboutFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}`;
 export const PageBlogPostDocument = gql`
     query pageBlogPost($slug: String!, $locale: String, $preview: Boolean) {
   pageBlogPostCollection(
@@ -3107,6 +3368,12 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    pageAbout(variables?: PageAboutQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageAboutQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageAboutQuery>(PageAboutDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageAbout', 'query');
+    },
+    pageAboutCollection(variables?: PageAboutCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageAboutCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageAboutCollectionQuery>(PageAboutCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageAboutCollection', 'query');
+    },
     pageBlogPost(variables: PageBlogPostQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageBlogPostQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageBlogPostQuery>(PageBlogPostDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageBlogPost', 'query');
     },

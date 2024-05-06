@@ -3,7 +3,7 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 
-import { getServerSideTranslations } from './utils/get-serverside-translations';
+import { getServerSideTranslations } from '../utils/get-serverside-translations';
 
 import { ArticleHero, ArticleTileGrid } from '@src/components/features/article';
 import { SeoFields } from '@src/components/features/seo';
@@ -16,30 +16,15 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
   const page = useContentfulLiveUpdates(props.page);
-  // const posts = useContentfulLiveUpdates(props.posts);
-
-  // if (!page?.featuredBlogPost || !posts) return;
 
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
 
-      {page.featuredBlogPost?.slug && (
-        <Container>
-          <Link href={`/${page.featuredBlogPost.slug}`}>
-            <ArticleHero article={page.featuredBlogPost} />
-          </Link>
-        </Container>
-      )}
-
       <Container>
         <div className="my-5 bg-colorTextLightest p-5 text-colorBlueLightest">{page.greeting}</div>
       </Container>
 
-      {/* <Container className="my-8  md:mb-10 lg:mb-16">
-        <h2 className="mb-4 md:mb-6">{t('landingPage.latestArticles')}</h2>
-        <ArticleTileGrid className="md:grid-cols-2 lg:grid-cols-3" articles={posts} />
-      </Container> */}
     </>
   );
 };
@@ -48,19 +33,10 @@ export const getStaticProps: GetStaticProps = async ({ locale, draftMode: previe
   try {
     const gqlClient = preview ? previewClient : client;
 
-    const homePageData = await gqlClient.pageHome({ locale, preview });
-    const page = homePageData.pageHomeCollection?.items[0];
+    console.log('About to fetch home page server data');
 
-    const blogPostsData = await gqlClient.pageBlogPostCollection({
-      limit: 6,
-      locale,
-      order: PageBlogPostOrder.PublishedDateDesc,
-      where: {
-        slug_not: page?.featuredBlogPost?.slug,
-      },
-      preview,
-    });
-    const posts = blogPostsData.pageBlogPostCollection?.items;
+    const aboutPageData = await gqlClient.pageAbout({ locale, preview });
+    const page = aboutPageData.pageAboutCollection?.items[0];
 
     if (!page) {
       return {
@@ -75,10 +51,10 @@ export const getStaticProps: GetStaticProps = async ({ locale, draftMode: previe
         previewActive: !!preview,
         ...(await getServerSideTranslations(locale)),
         page,
-        posts,
       },
     };
-  } catch {
+  } catch (err) {
+    console.log('Failed to fetch server side data', err);
     return {
       revalidate: revalidateDuration,
       notFound: true,

@@ -31,17 +31,14 @@ interface SidebarPropsInterface {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
   const { pathname } = useRouter();
-  console.log(`The current pathname is ${pathname}`);
 
   const navigation = [
     { name: 'Home', href: '/', icon: HomeIcon, current: pathname === '/' },
-    { name: 'About', href: '/about', icon: UsersIcon, current: false },
-    { name: 'Blog', href: '/blog', icon: NewspaperIcon, current: pathname === '/blog' },
-    { name: 'Photography', href: '/photography', icon: PhotoIcon, current: pathname === '/photography' },
-    { name: 'Music', href: '/music', icon: MusicalNoteIcon, current: false },
-    // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+    { name: 'About', href: '/about', icon: UsersIcon, current: pathname === '/about' },
+    { name: 'Blog', href: '/blog', icon: NewspaperIcon, current: pathname?.startsWith('/blog') },
+    { name: 'Photography', href: '/photography', icon: PhotoIcon, current: pathname.startsWith('/photography') },
+    { name: 'Music', href: '/music', icon: MusicalNoteIcon, current: false }
   ];
-
 
   return (
     <>

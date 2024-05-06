@@ -1,0 +1,20 @@
+fragment PageAboutFields on PageAbout {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  greeting
+}
+
+query pageAbout($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      ...PageAboutFields
+    }
+  }
+}

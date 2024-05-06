@@ -1,0 +1,7 @@
+query pageAboutCollection($locale: String, $preview: Boolean) {
+  pageAboutCollection(limit: 100, locale: $locale, preview: $preview) {
+    items {
+      ...PageAboutFields
+    }
+  }
+}
