@@ -14,6 +14,14 @@ fragment sitemapPagesFields on Query {
       }
     }
   }
+  pagePhotographyCollection(limit: 1, locale: $locale) {
+    items {
+      slug
+      sys {
+        publishedAt
+      }
+    }
+  }
 }
 
 

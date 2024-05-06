@@ -14,6 +14,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import Link from 'next/link';
 
 // import { Footer } from '../footer';
 // import { Header } from '../header';
@@ -29,10 +30,10 @@ interface LayoutPropsInterface {
 }
 
 const navigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: true },
+  { name: 'Home', href: '/', icon: HomeIcon, current: true },
   { name: 'About', href: '#', icon: UsersIcon, current: false },
   { name: 'Blog', href: '#', icon: NewspaperIcon, current: false },
-  { name: 'Photography', href: '#', icon: PhotoIcon, current: false },
+  { name: 'Photography', href: '/photography', icon: PhotoIcon, current: false },
   { name: 'Music', href: '#', icon: MusicalNoteIcon, current: false },
   // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ];
@@ -125,7 +126,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                           <ul className="-mx-2 space-y-1">
                             {navigation.map(item => (
                               <li key={item.name}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(
                                     item.current
@@ -144,7 +145,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -156,7 +157,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                           <ul className="-mx-2 mt-2 space-y-1">
                             {teams.map(team => (
                               <li key={team.name}>
-                                <a
+                                <Link
                                   href={team.href}
                                   className={classNames(
                                     team.current
@@ -176,13 +177,13 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                                     {team.initial}
                                   </span>
                                   <span className="truncate">{team.name}</span>
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
                         </li>
                         <li className="mt-auto">
-                          <a
+                          <Link
                             href="#"
                             className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-indigo-600"
                           >
@@ -191,7 +192,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                               aria-hidden="true"
                             />
                             Settings
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </nav>
@@ -219,7 +220,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                   <ul className="-mx-2 space-y-1">
                     {navigation.map(item => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             item.current
@@ -238,7 +239,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -248,7 +249,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                   <ul className="-mx-2 mt-2 space-y-1">
                     {teams.map(team => (
                       <li key={team.name}>
-                        <a
+                        <Link
                           href={team.href}
                           className={classNames(
                             team.current
@@ -268,13 +269,13 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                             {team.initial}
                           </span>
                           <span className="truncate">{team.name}</span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 </li>
                 <li className="mt-auto">
-                  <a
+                  <Link
                     href="#"
                     className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-indigo-600"
                   >
@@ -283,7 +284,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                       aria-hidden="true"
                     />
                     Settings
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -362,7 +363,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                       {userNavigation.map(item => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <a
+                            <Link
                               href={item.href}
                               className={classNames(
                                 active ? 'bg-gray50' : '',
@@ -370,7 +371,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
                               )}
                             >
                               {item.name}
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       ))}

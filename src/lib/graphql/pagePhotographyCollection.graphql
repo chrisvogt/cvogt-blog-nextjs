@@ -1,0 +1,7 @@
+query pagePhotographyCollection($locale: String, $preview: Boolean) {
+  pagePhotographyCollection(limit: 100, locale: $locale, preview: $preview) {
+    items {
+      ...PagePhotographyFields
+    }
+  }
+}

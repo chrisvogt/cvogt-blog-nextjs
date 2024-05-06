@@ -1,0 +1,21 @@
+fragment PagePhotographyFields on PagePhotography {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  slug
+  title
+}
+
+query PagePhotography($locale: String, $preview: Boolean) {
+  pagePhotographyCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      ...PagePhotographyFields
+    }
+  }
+}
