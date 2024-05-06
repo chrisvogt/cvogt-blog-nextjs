@@ -8,6 +8,15 @@ fragment sitemapPagesFields on Query {
       }
     }
   }
+  pagePhotoGalleryCollection(limit: 100, locale: $locale) {
+    items {
+      __typename
+      slug
+      sys {
+        publishedAt
+      }
+    }
+  }
   pageLandingCollection(limit: 1, locale: $locale) {
     items {
       sys {

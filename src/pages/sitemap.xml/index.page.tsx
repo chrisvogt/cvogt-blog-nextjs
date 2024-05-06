@@ -17,6 +17,8 @@ const getUrlFromSlug = (slug: string | null | undefined, typename: string | null
   // All blog posts live under the /blog path
   if (typename === 'PageBlogPost') {
     return `/blog/${slug}`;
+  } else if (typename === 'PagePhotoGallery') {
+    return `/photography/${slug}`;
   }
 
   return slug;
