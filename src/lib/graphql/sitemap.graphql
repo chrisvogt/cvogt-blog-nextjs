@@ -1,6 +1,7 @@
 fragment sitemapPagesFields on Query {
   pageBlogPostCollection(limit: 100, locale: $locale) {
     items {
+      __typename
       slug
       sys {
         publishedAt

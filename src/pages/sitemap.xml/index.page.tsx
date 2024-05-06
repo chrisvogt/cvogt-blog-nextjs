@@ -9,6 +9,19 @@ import { client } from '@src/lib/client';
 type SitemapFieldsWithoutTypename = Omit<SitemapPagesFieldsFragment, '__typename'>;
 type SitemapPageCollection = SitemapFieldsWithoutTypename[keyof SitemapFieldsWithoutTypename];
 
+const getUrlFromSlug = (slug: string | null | undefined, typename: string | null | undefined) => {
+  if (!slug) {
+    return;
+  }
+
+  // All blog posts live under the /blog path
+  if (typename === 'PageBlogPost') {
+    return `/blog/${slug}`;
+  }
+
+  return slug;
+};
+
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { locales } = ctx;
 
@@ -25,9 +38,10 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
             locales?.[index] === ctx.defaultLocale ? undefined : locales?.[index];
 
           const url = new URL(
-            path.join(localeForUrl || '', item?.slug || ''),
+            path.join(localeForUrl || '', getUrlFromSlug(item?.slug, item?.__typename) || ''),
             process.env.NEXT_PUBLIC_BASE_URL!,
           ).toString();
+
           return item && !item.seoFields?.excludeFromSitemap
             ? {
                 loc: url,

@@ -31,10 +31,10 @@ interface LayoutPropsInterface {
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'About', href: '#', icon: UsersIcon, current: false },
-  { name: 'Blog', href: '#', icon: NewspaperIcon, current: false },
+  { name: 'About', href: '/about', icon: UsersIcon, current: false },
+  { name: 'Blog', href: '/blog', icon: NewspaperIcon, current: false },
   { name: 'Photography', href: '/photography', icon: PhotoIcon, current: false },
-  { name: 'Music', href: '#', icon: MusicalNoteIcon, current: false },
+  { name: 'Music', href: '/music', icon: MusicalNoteIcon, current: false },
   // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ];
 const teams = [
