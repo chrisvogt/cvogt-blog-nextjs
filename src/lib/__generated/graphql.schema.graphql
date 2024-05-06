@@ -811,6 +811,7 @@ type PageLanding implements Entry {
   linkedFrom(allowedLocales: [String]): PageLandingLinkingCollections
   seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
+  thisIsAnotherField(locale: String): PageLandingThisIsAnotherField
 }
 
 type PageLandingCollection {
@@ -843,6 +844,9 @@ input PageLandingFilter {
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
   sys: SysFilter
+  thisIsAnotherField_contains: String
+  thisIsAnotherField_exists: Boolean
+  thisIsAnotherField_not_contains: String
 }
 
 type PageLandingLinkingCollections {
@@ -862,6 +866,46 @@ enum PageLandingOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+type PageLandingThisIsAnotherField {
+  json: JSON!
+  links: PageLandingThisIsAnotherFieldLinks!
+}
+
+type PageLandingThisIsAnotherFieldAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PageLandingThisIsAnotherFieldEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PageLandingThisIsAnotherFieldLinks {
+  assets: PageLandingThisIsAnotherFieldAssets!
+  entries: PageLandingThisIsAnotherFieldEntries!
+  resources: PageLandingThisIsAnotherFieldResources!
+}
+
+type PageLandingThisIsAnotherFieldResources {
+  block: [PageLandingThisIsAnotherFieldResourcesBlock!]!
+  hyperlink: [PageLandingThisIsAnotherFieldResourcesHyperlink!]!
+  inline: [PageLandingThisIsAnotherFieldResourcesInline!]!
+}
+
+type PageLandingThisIsAnotherFieldResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PageLandingThisIsAnotherFieldResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PageLandingThisIsAnotherFieldResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """

@@ -1152,6 +1152,7 @@ export type PageLanding = Entry & {
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
+  thisIsAnotherField?: Maybe<PageLandingThisIsAnotherField>;
 };
 
 
@@ -1188,6 +1189,12 @@ export type PageLandingSeoFieldsArgs = {
   where?: InputMaybe<ComponentSeoFilter>;
 };
 
+
+/** To have an entry point for the app (e.g. Homepage) [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageLanding) */
+export type PageLandingThisIsAnotherFieldArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
 export type PageLandingCollection = {
   __typename?: 'PageLandingCollection';
   items: Array<Maybe<PageLanding>>;
@@ -1219,6 +1226,9 @@ export type PageLandingFilter = {
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
+  thisIsAnotherField_contains?: InputMaybe<Scalars['String']>;
+  thisIsAnotherField_exists?: InputMaybe<Scalars['Boolean']>;
+  thisIsAnotherField_not_contains?: InputMaybe<Scalars['String']>;
 };
 
 export type PageLandingLinkingCollections = {
@@ -1248,6 +1258,54 @@ export enum PageLandingOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+export type PageLandingThisIsAnotherField = {
+  __typename?: 'PageLandingThisIsAnotherField';
+  json: Scalars['JSON'];
+  links: PageLandingThisIsAnotherFieldLinks;
+};
+
+export type PageLandingThisIsAnotherFieldAssets = {
+  __typename?: 'PageLandingThisIsAnotherFieldAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PageLandingThisIsAnotherFieldEntries = {
+  __typename?: 'PageLandingThisIsAnotherFieldEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PageLandingThisIsAnotherFieldLinks = {
+  __typename?: 'PageLandingThisIsAnotherFieldLinks';
+  assets: PageLandingThisIsAnotherFieldAssets;
+  entries: PageLandingThisIsAnotherFieldEntries;
+  resources: PageLandingThisIsAnotherFieldResources;
+};
+
+export type PageLandingThisIsAnotherFieldResources = {
+  __typename?: 'PageLandingThisIsAnotherFieldResources';
+  block: Array<PageLandingThisIsAnotherFieldResourcesBlock>;
+  hyperlink: Array<PageLandingThisIsAnotherFieldResourcesHyperlink>;
+  inline: Array<PageLandingThisIsAnotherFieldResourcesInline>;
+};
+
+export type PageLandingThisIsAnotherFieldResourcesBlock = ResourceLink & {
+  __typename?: 'PageLandingThisIsAnotherFieldResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PageLandingThisIsAnotherFieldResourcesHyperlink = ResourceLink & {
+  __typename?: 'PageLandingThisIsAnotherFieldResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PageLandingThisIsAnotherFieldResourcesInline = ResourceLink & {
+  __typename?: 'PageLandingThisIsAnotherFieldResourcesInline';
+  sys: ResourceSys;
+};
 
 export type Query = {
   __typename?: 'Query';
