@@ -175,6 +175,7 @@ export type AssetLinkingCollections = {
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
+  pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
 };
 
 
@@ -211,6 +212,14 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 
 
 export type AssetLinkingCollectionsPageBlogPostCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsPagePhotoGalleryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -310,6 +319,7 @@ export type ComponentAuthorLinkingCollections = {
   __typename?: 'ComponentAuthorLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
+  pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
 };
 
 
@@ -329,7 +339,35 @@ export type ComponentAuthorLinkingCollectionsPageBlogPostCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']>;
 };
 
+
+export type ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
 export enum ComponentAuthorLinkingCollectionsPageBlogPostCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   PublishedDateAsc = 'publishedDate_ASC',
@@ -590,6 +628,7 @@ export type ComponentSeoLinkingCollections = {
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
   pagePhotographyCollection?: Maybe<PagePhotographyCollection>;
 };
 
@@ -615,6 +654,15 @@ export type ComponentSeoLinkingCollectionsPageLandingCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageLandingCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -660,6 +708,25 @@ export enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
 }
 
 export enum ComponentSeoLinkingCollectionsPagePhotographyCollectionOrder {
@@ -1334,6 +1401,298 @@ export type PageLandingThisIsAnotherFieldResourcesInline = ResourceLink & {
   sys: ResourceSys;
 };
 
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGallery = Entry & {
+  __typename?: 'PagePhotoGallery';
+  author?: Maybe<ComponentAuthor>;
+  content?: Maybe<PagePhotoGalleryContent>;
+  contentfulMetadata: ContentfulMetadata;
+  featuredImage?: Maybe<Asset>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<PagePhotoGalleryLinkingCollections>;
+  publishedDate?: Maybe<Scalars['DateTime']>;
+  relatedPhotographyPostsCollection?: Maybe<PagePhotoGalleryRelatedPhotographyPostsCollection>;
+  seoFields?: Maybe<ComponentSeo>;
+  shortDescription?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryAuthorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentAuthorFilter>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryFeaturedImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryPublishedDateArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryRelatedPhotographyPostsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePhotoGalleryRelatedPhotographyPostsCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PagePhotoGalleryFilter>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGallerySeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentSeoFilter>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryShortDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGallerySlugArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
+export type PagePhotoGalleryTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PagePhotoGalleryCollection = {
+  __typename?: 'PagePhotoGalleryCollection';
+  items: Array<Maybe<PagePhotoGallery>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PagePhotoGalleryContent = {
+  __typename?: 'PagePhotoGalleryContent';
+  json: Scalars['JSON'];
+  links: PagePhotoGalleryContentLinks;
+};
+
+export type PagePhotoGalleryContentAssets = {
+  __typename?: 'PagePhotoGalleryContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PagePhotoGalleryContentEntries = {
+  __typename?: 'PagePhotoGalleryContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PagePhotoGalleryContentLinks = {
+  __typename?: 'PagePhotoGalleryContentLinks';
+  assets: PagePhotoGalleryContentAssets;
+  entries: PagePhotoGalleryContentEntries;
+  resources: PagePhotoGalleryContentResources;
+};
+
+export type PagePhotoGalleryContentResources = {
+  __typename?: 'PagePhotoGalleryContentResources';
+  block: Array<PagePhotoGalleryContentResourcesBlock>;
+  hyperlink: Array<PagePhotoGalleryContentResourcesHyperlink>;
+  inline: Array<PagePhotoGalleryContentResourcesInline>;
+};
+
+export type PagePhotoGalleryContentResourcesBlock = ResourceLink & {
+  __typename?: 'PagePhotoGalleryContentResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PagePhotoGalleryContentResourcesHyperlink = ResourceLink & {
+  __typename?: 'PagePhotoGalleryContentResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PagePhotoGalleryContentResourcesInline = ResourceLink & {
+  __typename?: 'PagePhotoGalleryContentResourcesInline';
+  sys: ResourceSys;
+};
+
+export type PagePhotoGalleryFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PagePhotoGalleryFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PagePhotoGalleryFilter>>>;
+  author?: InputMaybe<CfComponentAuthorNestedFilter>;
+  author_exists?: InputMaybe<Scalars['Boolean']>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  publishedDate?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate_gt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_gte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedDate_lt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_lte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  relatedPhotographyPosts?: InputMaybe<CfPagePhotoGalleryNestedFilter>;
+  relatedPhotographyPostsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shortDescription_not?: InputMaybe<Scalars['String']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type PagePhotoGalleryLinkingCollections = {
+  __typename?: 'PagePhotoGalleryLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
+};
+
+
+export type PagePhotoGalleryLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum PagePhotoGalleryOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type PagePhotoGalleryRelatedPhotographyPostsCollection = {
+  __typename?: 'PagePhotoGalleryRelatedPhotographyPostsCollection';
+  items: Array<Maybe<PagePhotoGallery>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export enum PagePhotoGalleryRelatedPhotographyPostsCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 /** My photography galleries. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotography) */
 export type PagePhotography = Entry & {
   __typename?: 'PagePhotography';
@@ -1462,6 +1821,8 @@ export type Query = {
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageLanding?: Maybe<PageLanding>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pagePhotoGallery?: Maybe<PagePhotoGallery>;
+  pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
   pagePhotography?: Maybe<PagePhotography>;
   pagePhotographyCollection?: Maybe<PagePhotographyCollection>;
 };
@@ -1583,6 +1944,23 @@ export type QueryPageLandingCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageLandingFilter>;
+};
+
+
+export type QueryPagePhotoGalleryArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPagePhotoGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PagePhotoGalleryOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PagePhotoGalleryFilter>;
 };
 
 
@@ -1778,6 +2156,57 @@ export type CfPageBlogPostNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type CfPagePhotoGalleryNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPagePhotoGalleryNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPagePhotoGalleryNestedFilter>>>;
+  author_exists?: InputMaybe<Scalars['Boolean']>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  publishedDate?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate_gt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_gte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedDate_lt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_lte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  relatedPhotographyPostsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shortDescription_not?: InputMaybe<Scalars['String']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type AuthorFieldsFragment = { __typename: 'ComponentAuthor', name?: string | null, sys: { __typename?: 'Sys', id: string }, avatar?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
@@ -1805,7 +2234,7 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
   ) | null, content?: { __typename?: 'PageBlogPostContent', json: any, links: { __typename?: 'PageBlogPostContentLinks', entries: { __typename?: 'PageBlogPostContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
       { __typename?: 'PageBlogPost' }
       & ReferencePageBlogPostFieldsFragment
     ) | null> } | null };
@@ -1864,6 +2293,54 @@ export type PageLandingCollectionQueryVariables = Exact<{
 export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingCollection?: { __typename?: 'PageLandingCollection', items: Array<(
       { __typename?: 'PageLanding' }
       & PageLandingFieldsFragment
+    ) | null> } | null };
+
+export type ReferencePagePhotoGalleryFieldsFragment = { __typename: 'PagePhotoGallery', slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?: (
+    { __typename?: 'ComponentAuthor' }
+    & AuthorFieldsFragment
+  ) | null, featuredImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null };
+
+export type PagePhotoGalleryFieldsFragment = { __typename: 'PagePhotoGallery', internalName?: string | null, slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, author?: (
+    { __typename?: 'ComponentAuthor' }
+    & AuthorFieldsFragment
+  ) | null, featuredImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, content?: { __typename?: 'PagePhotoGalleryContent', json: any, links: { __typename?: 'PagePhotoGalleryContentLinks', entries: { __typename?: 'PagePhotoGalleryContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
+          { __typename?: 'ComponentRichImage' }
+          & RichImageFieldsFragment
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
+
+export type PagePhotoGalleryQueryVariables = Exact<{
+  slug: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PagePhotoGalleryQuery = { __typename?: 'Query', pagePhotoGalleryCollection?: { __typename?: 'PagePhotoGalleryCollection', items: Array<(
+      { __typename?: 'PagePhotoGallery' }
+      & PagePhotoGalleryFieldsFragment
+    ) | null> } | null };
+
+export type PagePhotoGalleryCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Array<InputMaybe<PagePhotoGalleryOrder>> | InputMaybe<PagePhotoGalleryOrder>>;
+  where?: InputMaybe<PagePhotoGalleryFilter>;
+}>;
+
+
+export type PagePhotoGalleryCollectionQuery = { __typename?: 'Query', pagePhotoGalleryCollection?: { __typename?: 'PagePhotoGalleryCollection', items: Array<(
+      { __typename?: 'PagePhotoGallery' }
+      & PagePhotoGalleryFieldsFragment
     ) | null> } | null };
 
 export type PagePhotographyFieldsFragment = { __typename: 'PagePhotography', internalName?: string | null, slug?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
@@ -2044,6 +2521,58 @@ export const PageLandingFieldsFragmentDoc = gql`
   greeting
 }
     `;
+export const ReferencePagePhotoGalleryFieldsFragmentDoc = gql`
+    fragment ReferencePagePhotoGalleryFields on PagePhotoGallery {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+}
+    `;
+export const PagePhotoGalleryFieldsFragmentDoc = gql`
+    fragment PagePhotoGalleryFields on PagePhotoGallery {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+  content {
+    json
+    links {
+      entries {
+        block {
+          ...RichImageFields
+        }
+      }
+    }
+  }
+}
+    `;
 export const PagePhotographyFieldsFragmentDoc = gql`
     fragment PagePhotographyFields on PagePhotography {
   __typename
@@ -2152,6 +2681,43 @@ ${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}
 ${AuthorFieldsFragmentDoc}`;
+export const PagePhotoGalleryDocument = gql`
+    query pagePhotoGallery($slug: String!, $locale: String, $preview: Boolean) {
+  pagePhotoGalleryCollection(
+    limit: 1
+    where: {slug: $slug}
+    locale: $locale
+    preview: $preview
+  ) {
+    items {
+      ...PagePhotoGalleryFields
+    }
+  }
+}
+    ${PagePhotoGalleryFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${AuthorFieldsFragmentDoc}
+${RichImageFieldsFragmentDoc}`;
+export const PagePhotoGalleryCollectionDocument = gql`
+    query pagePhotoGalleryCollection($locale: String, $preview: Boolean, $limit: Int, $order: [PagePhotoGalleryOrder], $where: PagePhotoGalleryFilter) {
+  pagePhotoGalleryCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    order: $order
+    where: $where
+  ) {
+    items {
+      ...PagePhotoGalleryFields
+    }
+  }
+}
+    ${PagePhotoGalleryFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${AuthorFieldsFragmentDoc}
+${RichImageFieldsFragmentDoc}`;
 export const PagePhotographyDocument = gql`
     query PagePhotography($locale: String, $preview: Boolean) {
   pagePhotographyCollection(limit: 1, locale: $locale, preview: $preview) {
@@ -2198,6 +2764,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageLandingCollection(variables?: PageLandingCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingCollectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingCollectionQuery>(PageLandingCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLandingCollection', 'query');
+    },
+    pagePhotoGallery(variables: PagePhotoGalleryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PagePhotoGalleryQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PagePhotoGalleryQuery>(PagePhotoGalleryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pagePhotoGallery', 'query');
+    },
+    pagePhotoGalleryCollection(variables?: PagePhotoGalleryCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PagePhotoGalleryCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PagePhotoGalleryCollectionQuery>(PagePhotoGalleryCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pagePhotoGalleryCollection', 'query');
     },
     PagePhotography(variables?: PagePhotographyQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PagePhotographyQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PagePhotographyQuery>(PagePhotographyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'PagePhotography', 'query');

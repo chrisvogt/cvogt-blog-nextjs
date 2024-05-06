@@ -1,0 +1,13 @@
+query pagePhotoGalleryCollection(
+  $locale: String
+  $preview: Boolean
+  $limit: Int
+  $order: [PagePhotoGalleryOrder]
+  $where: PagePhotoGalleryFilter
+) {
+  pagePhotoGalleryCollection(limit: $limit, locale: $locale, preview: $preview, order: $order where: $where) {
+    items {
+      ...PagePhotoGalleryFields
+    }
+  }
+}

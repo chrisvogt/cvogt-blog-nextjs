@@ -95,6 +95,7 @@ type AssetLinkingCollections {
   componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSeoCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageBlogPostCollection
+  pagePhotoGalleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
 }
 
 enum AssetOrder {
@@ -164,9 +165,29 @@ input ComponentAuthorFilter {
 type ComponentAuthorLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [ComponentAuthorLinkingCollectionsPageBlogPostCollectionOrder], preview: Boolean, skip: Int = 0): PageBlogPostCollection
+  pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
 }
 
 enum ComponentAuthorLinkingCollectionsPageBlogPostCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  publishedDate_ASC
+  publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionOrder {
   internalName_ASC
   internalName_DESC
   publishedDate_ASC
@@ -335,6 +356,7 @@ type ComponentSeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageBlogPostCollectionOrder], preview: Boolean, skip: Int = 0): PageBlogPostCollection
   pageLandingCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
+  pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
   pagePhotographyCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPagePhotographyCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotographyCollection
 }
 
@@ -370,6 +392,25 @@ enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  publishedDate_ASC
+  publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum ComponentSeoLinkingCollectionsPagePhotographyCollectionOrder {
@@ -927,6 +968,195 @@ type PageLandingThisIsAnotherFieldResourcesInline implements ResourceLink {
 }
 
 """
+Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery)
+"""
+type PagePhotoGallery implements Entry {
+  author(locale: String, preview: Boolean, where: ComponentAuthorFilter): ComponentAuthor
+  content(locale: String): PagePhotoGalleryContent
+  contentfulMetadata: ContentfulMetadata!
+  featuredImage(locale: String, preview: Boolean): Asset
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): PagePhotoGalleryLinkingCollections
+  publishedDate(locale: String): DateTime
+  relatedPhotographyPostsCollection(limit: Int = 100, locale: String, order: [PagePhotoGalleryRelatedPhotographyPostsCollectionOrder], preview: Boolean, skip: Int = 0, where: PagePhotoGalleryFilter): PagePhotoGalleryRelatedPhotographyPostsCollection
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  shortDescription(locale: String): String
+  slug(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type PagePhotoGalleryCollection {
+  items: [PagePhotoGallery]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type PagePhotoGalleryContent {
+  json: JSON!
+  links: PagePhotoGalleryContentLinks!
+}
+
+type PagePhotoGalleryContentAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PagePhotoGalleryContentEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PagePhotoGalleryContentLinks {
+  assets: PagePhotoGalleryContentAssets!
+  entries: PagePhotoGalleryContentEntries!
+  resources: PagePhotoGalleryContentResources!
+}
+
+type PagePhotoGalleryContentResources {
+  block: [PagePhotoGalleryContentResourcesBlock!]!
+  hyperlink: [PagePhotoGalleryContentResourcesHyperlink!]!
+  inline: [PagePhotoGalleryContentResourcesInline!]!
+}
+
+type PagePhotoGalleryContentResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PagePhotoGalleryContentResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PagePhotoGalleryContentResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+input PagePhotoGalleryFilter {
+  AND: [PagePhotoGalleryFilter]
+  OR: [PagePhotoGalleryFilter]
+  author: cfComponentAuthorNestedFilter
+  author_exists: Boolean
+  content_contains: String
+  content_exists: Boolean
+  content_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  featuredImage_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  publishedDate: DateTime
+  publishedDate_exists: Boolean
+  publishedDate_gt: DateTime
+  publishedDate_gte: DateTime
+  publishedDate_in: [DateTime]
+  publishedDate_lt: DateTime
+  publishedDate_lte: DateTime
+  publishedDate_not: DateTime
+  publishedDate_not_in: [DateTime]
+  relatedPhotographyPosts: cfPagePhotoGalleryNestedFilter
+  relatedPhotographyPostsCollection_exists: Boolean
+  seoFields: cfComponentSeoNestedFilter
+  seoFields_exists: Boolean
+  shortDescription: String
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_in: [String]
+  shortDescription_not: String
+  shortDescription_not_contains: String
+  shortDescription_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type PagePhotoGalleryLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
+}
+
+enum PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  publishedDate_ASC
+  publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum PagePhotoGalleryOrder {
+  internalName_ASC
+  internalName_DESC
+  publishedDate_ASC
+  publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type PagePhotoGalleryRelatedPhotographyPostsCollection {
+  items: [PagePhotoGallery]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum PagePhotoGalleryRelatedPhotographyPostsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  publishedDate_ASC
+  publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
 My photography galleries. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotography)
 """
 type PagePhotography implements Entry {
@@ -1017,6 +1247,8 @@ type Query {
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [PageBlogPostOrder], preview: Boolean, skip: Int = 0, where: PageBlogPostFilter): PageBlogPostCollection
   pageLanding(id: String!, locale: String, preview: Boolean): PageLanding
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageLandingOrder], preview: Boolean, skip: Int = 0, where: PageLandingFilter): PageLandingCollection
+  pagePhotoGallery(id: String!, locale: String, preview: Boolean): PagePhotoGallery
+  pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [PagePhotoGalleryOrder], preview: Boolean, skip: Int = 0, where: PagePhotoGalleryFilter): PagePhotoGalleryCollection
   pagePhotography(id: String!, locale: String, preview: Boolean): PagePhotography
   pagePhotographyCollection(limit: Int = 100, locale: String, order: [PagePhotographyOrder], preview: Boolean, skip: Int = 0, where: PagePhotographyFilter): PagePhotographyCollection
 }
@@ -1170,6 +1402,57 @@ input cfPageBlogPostNestedFilter {
   publishedDate_not: DateTime
   publishedDate_not_in: [DateTime]
   relatedBlogPostsCollection_exists: Boolean
+  seoFields_exists: Boolean
+  shortDescription: String
+  shortDescription_contains: String
+  shortDescription_exists: Boolean
+  shortDescription_in: [String]
+  shortDescription_not: String
+  shortDescription_not_contains: String
+  shortDescription_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+input cfPagePhotoGalleryNestedFilter {
+  AND: [cfPagePhotoGalleryNestedFilter]
+  OR: [cfPagePhotoGalleryNestedFilter]
+  author_exists: Boolean
+  content_contains: String
+  content_exists: Boolean
+  content_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  featuredImage_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  publishedDate: DateTime
+  publishedDate_exists: Boolean
+  publishedDate_gt: DateTime
+  publishedDate_gte: DateTime
+  publishedDate_in: [DateTime]
+  publishedDate_lt: DateTime
+  publishedDate_lte: DateTime
+  publishedDate_not: DateTime
+  publishedDate_not_in: [DateTime]
+  relatedPhotographyPostsCollection_exists: Boolean
   seoFields_exists: Boolean
   shortDescription: String
   shortDescription_contains: String

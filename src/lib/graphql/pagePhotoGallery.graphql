@@ -1,0 +1,62 @@
+fragment ReferencePagePhotoGalleryFields on PagePhotoGallery {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+}
+
+fragment PagePhotoGalleryFields on PagePhotoGallery {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+  content {
+    json
+    links {
+      entries {
+        block {
+          ...RichImageFields
+        }
+      }
+    }
+  }
+#   relatedBlogPostsCollection(limit: 2) {
+#     items {
+#       ...ReferencePageBlogPostFields
+#     }
+#   }
+}
+
+query pagePhotoGallery($slug: String!, $locale: String, $preview: Boolean) {
+  pagePhotoGalleryCollection(limit: 1, where: { slug: $slug }, locale: $locale, preview: $preview) {
+    items {
+      ...PagePhotoGalleryFields
+    }
+  }
+}
