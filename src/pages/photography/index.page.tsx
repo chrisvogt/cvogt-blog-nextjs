@@ -54,9 +54,9 @@ export const getStaticProps: GetStaticProps = async ({ locale, draftMode: previe
       limit: 6,
       locale,
       order: PagePhotoGalleryOrder.PublishedDateDesc,
-      where: {
-        slug_not: page?.featuredPhotoGallery?.slug,
-      },
+      // where: {
+      //   slug_not: page?.featuredPhotoGallery?.slug,
+      // },
       preview,
     });
     const photoGalleries = blogPostsData.pagePhotoGalleryCollection?.items;
