@@ -1,0 +1,23 @@
+fragment PageHomeFields on PageHome {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  featuredBlogPost {
+    ...ReferencePageBlogPostFields
+  }
+  greeting
+}
+
+query pageHome($locale: String, $preview: Boolean) {
+  pageHomeCollection(limit: 1, locale: $locale, preview: $preview) {
+    items {
+      ...PageHomeFields
+    }
+  }
+}

@@ -47,8 +47,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale, draftMode
 
     const photoGallery = photoGalleryData.pagePhotoGalleryCollection?.items[0];
 
-    // console.log(JSON.stringify(landingPageData));
-
     if (!photoGallery) {
       return {
         notFound: true,

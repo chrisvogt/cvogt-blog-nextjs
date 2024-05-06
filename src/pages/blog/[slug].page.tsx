@@ -58,8 +58,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale, draftMode
 
     const isFeatured = landingPage?.featuredBlogPost?.slug === blogPost?.slug;
 
-    // console.log(JSON.stringify(landingPageData));
-
     if (!blogPost) {
       return {
         notFound: true,

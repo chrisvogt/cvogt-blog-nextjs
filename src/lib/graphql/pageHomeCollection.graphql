@@ -1,0 +1,7 @@
+query pageHomeCollection($locale: String, $preview: Boolean) {
+  pageHomeCollection(limit: 100, locale: $locale, preview: $preview) {
+    items {
+      ...PageHomeFields
+    }
+  }
+}

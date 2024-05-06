@@ -6,6 +6,9 @@
   "landingPage": {
     "latestArticles": "Latest articles"
   },
+  "photographyPage": {
+    "latestGalleries": "Latest galleries"
+  },
   "common": {
     "regionalSettings": "Regional Settings",
     "homepage": "Homepage",

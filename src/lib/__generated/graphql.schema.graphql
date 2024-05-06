@@ -355,6 +355,7 @@ input ComponentSeoFilter {
 type ComponentSeoLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageBlogPostCollectionOrder], preview: Boolean, skip: Int = 0): PageBlogPostCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
   pageLandingCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
   pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
   pagePhotographyCollection(limit: Int = 100, locale: String, order: [ComponentSeoLinkingCollectionsPagePhotographyCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotographyCollection
@@ -377,6 +378,21 @@ enum ComponentSeoLinkingCollectionsPageBlogPostCollectionOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+enum ComponentSeoLinkingCollectionsPageHomeCollectionOrder {
+  greeting_ASC
+  greeting_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
@@ -777,6 +793,7 @@ input PageBlogPostFilter {
 type PageBlogPostLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [PageBlogPostLinkingCollectionsPageBlogPostCollectionOrder], preview: Boolean, skip: Int = 0): PageBlogPostCollection
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageBlogPostLinkingCollectionsPageHomeCollectionOrder], preview: Boolean, skip: Int = 0): PageHomeCollection
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageBlogPostLinkingCollectionsPageLandingCollectionOrder], preview: Boolean, skip: Int = 0): PageLandingCollection
 }
 
@@ -797,6 +814,21 @@ enum PageBlogPostLinkingCollectionsPageBlogPostCollectionOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+enum PageBlogPostLinkingCollectionsPageHomeCollectionOrder {
+  greeting_ASC
+  greeting_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 enum PageBlogPostLinkingCollectionsPageLandingCollectionOrder {
@@ -857,6 +889,114 @@ enum PageBlogPostRelatedBlogPostsCollectionOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+"""
+The home page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageHome)
+"""
+type PageHome implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  featuredBlogPost(locale: String, preview: Boolean, where: PageBlogPostFilter): PageBlogPost
+  greeting(locale: String): String
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): PageHomeLinkingCollections
+  seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
+  sys: Sys!
+  thisIsAnotherField(locale: String): PageHomeThisIsAnotherField
+}
+
+type PageHomeCollection {
+  items: [PageHome]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input PageHomeFilter {
+  AND: [PageHomeFilter]
+  OR: [PageHomeFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  featuredBlogPost: cfPageBlogPostNestedFilter
+  featuredBlogPost_exists: Boolean
+  greeting: String
+  greeting_contains: String
+  greeting_exists: Boolean
+  greeting_in: [String]
+  greeting_not: String
+  greeting_not_contains: String
+  greeting_not_in: [String]
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  seoFields: cfComponentSeoNestedFilter
+  seoFields_exists: Boolean
+  sys: SysFilter
+  thisIsAnotherField_contains: String
+  thisIsAnotherField_exists: Boolean
+  thisIsAnotherField_not_contains: String
+}
+
+type PageHomeLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum PageHomeOrder {
+  greeting_ASC
+  greeting_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type PageHomeThisIsAnotherField {
+  json: JSON!
+  links: PageHomeThisIsAnotherFieldLinks!
+}
+
+type PageHomeThisIsAnotherFieldAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type PageHomeThisIsAnotherFieldEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type PageHomeThisIsAnotherFieldLinks {
+  assets: PageHomeThisIsAnotherFieldAssets!
+  entries: PageHomeThisIsAnotherFieldEntries!
+  resources: PageHomeThisIsAnotherFieldResources!
+}
+
+type PageHomeThisIsAnotherFieldResources {
+  block: [PageHomeThisIsAnotherFieldResourcesBlock!]!
+  hyperlink: [PageHomeThisIsAnotherFieldResourcesHyperlink!]!
+  inline: [PageHomeThisIsAnotherFieldResourcesInline!]!
+}
+
+type PageHomeThisIsAnotherFieldResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PageHomeThisIsAnotherFieldResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type PageHomeThisIsAnotherFieldResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """
@@ -1090,6 +1230,7 @@ input PagePhotoGalleryFilter {
 type PagePhotoGalleryLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pagePhotoGalleryCollection(limit: Int = 100, locale: String, order: [PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotoGalleryCollection
+  pagePhotographyCollection(limit: Int = 100, locale: String, order: [PagePhotoGalleryLinkingCollectionsPagePhotographyCollectionOrder], preview: Boolean, skip: Int = 0): PagePhotographyCollection
 }
 
 enum PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder {
@@ -1097,6 +1238,23 @@ enum PagePhotoGalleryLinkingCollectionsPagePhotoGalleryCollectionOrder {
   internalName_DESC
   publishedDate_ASC
   publishedDate_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum PagePhotoGalleryLinkingCollectionsPagePhotographyCollectionOrder {
+  internalName_ASC
+  internalName_DESC
   slug_ASC
   slug_DESC
   sys_firstPublishedAt_ASC
@@ -1161,6 +1319,7 @@ My photography galleries. [See type definition](https://app.contentful.com/space
 """
 type PagePhotography implements Entry {
   contentfulMetadata: ContentfulMetadata!
+  featuredPhotoGallery(locale: String, preview: Boolean, where: PagePhotoGalleryFilter): PagePhotoGallery
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PagePhotographyLinkingCollections
   seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
@@ -1180,6 +1339,8 @@ input PagePhotographyFilter {
   AND: [PagePhotographyFilter]
   OR: [PagePhotographyFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  featuredPhotoGallery: cfPagePhotoGalleryNestedFilter
+  featuredPhotoGallery_exists: Boolean
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -1245,6 +1406,8 @@ type Query {
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   pageBlogPost(id: String!, locale: String, preview: Boolean): PageBlogPost
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [PageBlogPostOrder], preview: Boolean, skip: Int = 0, where: PageBlogPostFilter): PageBlogPostCollection
+  pageHome(id: String!, locale: String, preview: Boolean): PageHome
+  pageHomeCollection(limit: Int = 100, locale: String, order: [PageHomeOrder], preview: Boolean, skip: Int = 0, where: PageHomeFilter): PageHomeCollection
   pageLanding(id: String!, locale: String, preview: Boolean): PageLanding
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageLandingOrder], preview: Boolean, skip: Int = 0, where: PageLandingFilter): PageLandingCollection
   pagePhotoGallery(id: String!, locale: String, preview: Boolean): PagePhotoGallery

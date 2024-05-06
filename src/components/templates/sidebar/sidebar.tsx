@@ -12,15 +12,8 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const navigation = [
-  { name: 'Home', href: '/', icon: HomeIcon, current: true },
-  { name: 'About', href: '/about', icon: UsersIcon, current: false },
-  { name: 'Blog', href: '/blog', icon: NewspaperIcon, current: false },
-  { name: 'Photography', href: '/photography', icon: PhotoIcon, current: false },
-  { name: 'Music', href: '/music', icon: MusicalNoteIcon, current: false },
-  // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
-];
 const teams = [
   { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
   { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
@@ -37,6 +30,19 @@ interface SidebarPropsInterface {
 }
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
+  const { pathname } = useRouter();
+  console.log(`The current pathname is ${pathname}`);
+
+  const navigation = [
+    { name: 'Home', href: '/', icon: HomeIcon, current: pathname === '/' },
+    { name: 'About', href: '/about', icon: UsersIcon, current: false },
+    { name: 'Blog', href: '/blog', icon: NewspaperIcon, current: pathname === '/blog' },
+    { name: 'Photography', href: '/photography', icon: PhotoIcon, current: pathname === '/photography' },
+    { name: 'Music', href: '/music', icon: MusicalNoteIcon, current: false },
+    // { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+  ];
+
+
   return (
     <>
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -89,7 +95,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                   <div className="flex h-16 shrink-0 items-center">
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                      src="https://tailwindui.com/img/logos/mark.svg?color=violet&shade=600"
                       alt="Your Company"
                     />
                   </div>
@@ -103,16 +109,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                                 href={item.href}
                                 className={classNames(
                                   item.current
-                                    ? 'bg-gray50 text-indigo-600'
-                                    : 'text-gray700 hover:bg-gray50 hover:text-indigo-600',
+                                    ? 'bg-gray50 text-violet-600'
+                                    : 'text-gray700 hover:bg-gray50 hover:text-violet-600',
                                   'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                                 )}
                               >
                                 <item.icon
                                   className={classNames(
                                     item.current
-                                      ? 'text-indigo-600'
-                                      : 'text-gray400 group-hover:text-indigo-600',
+                                      ? 'text-violet-600'
+                                      : 'text-gray400 group-hover:text-violet-600',
                                     'h-6 w-6 shrink-0',
                                   )}
                                   aria-hidden="true"
@@ -134,16 +140,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                                 href={team.href}
                                 className={classNames(
                                   team.current
-                                    ? 'bg-gray50 text-indigo-600'
-                                    : 'text-gray700 hover:bg-gray50 hover:text-indigo-600',
+                                    ? 'bg-gray50 text-violet-600'
+                                    : 'text-gray700 hover:bg-gray50 hover:text-violet-600',
                                   'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                                 )}
                               >
                                 <span
                                   className={classNames(
                                     team.current
-                                      ? 'border-indigo-600 text-indigo-600'
-                                      : 'text-gray400 border-gray200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                                      ? 'border-violet-600 text-violet-600'
+                                      : 'text-gray400 border-gray200 group-hover:border-violet-600 group-hover:text-violet-600',
                                     'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium',
                                   )}
                                 >
@@ -158,10 +164,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                       <li className="mt-auto">
                         <Link
                           href="#"
-                          className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-indigo-600"
+                          className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-violet-600"
                         >
                           <Cog6ToothIcon
-                            className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600"
+                            className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-violet-600"
                             aria-hidden="true"
                           />
                           Settings
@@ -183,7 +189,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
           <div className="flex h-16 shrink-0 items-center">
             <img
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://tailwindui.com/img/logos/mark.svg?color=violet&shade=600"
               alt="Your Company"
             />
           </div>
@@ -197,16 +203,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? 'bg-gray50 text-indigo-600'
-                            : 'text-gray700 hover:bg-gray50 hover:text-indigo-600',
+                            ? 'bg-gray50 text-violet-600'
+                            : 'text-gray700 hover:bg-gray50 hover:text-violet-600',
                           'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                         )}
                       >
                         <item.icon
                           className={classNames(
                             item.current
-                              ? 'text-indigo-600'
-                              : 'text-gray400 group-hover:text-indigo-600',
+                              ? 'text-violet-600'
+                              : 'text-gray400 group-hover:text-violet-600',
                             'h-6 w-6 shrink-0',
                           )}
                           aria-hidden="true"
@@ -226,16 +232,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
                         href={team.href}
                         className={classNames(
                           team.current
-                            ? 'bg-gray50 text-indigo-600'
-                            : 'text-gray700 hover:bg-gray50 hover:text-indigo-600',
+                            ? 'bg-gray50 text-violet-600'
+                            : 'text-gray700 hover:bg-gray50 hover:text-violet-600',
                           'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                         )}
                       >
                         <span
                           className={classNames(
                             team.current
-                              ? 'border-indigo-600 text-indigo-600'
-                              : 'text-gray400 border-gray200 group-hover:border-indigo-600 group-hover:text-indigo-600',
+                              ? 'border-violet-600 text-violet-600'
+                              : 'text-gray400 border-gray200 group-hover:border-violet-600 group-hover:text-violet-600',
                             'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-white text-[0.625rem] font-medium',
                           )}
                         >
@@ -250,10 +256,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarPropsInterface) => {
               <li className="mt-auto">
                 <Link
                   href="#"
-                  className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-indigo-600"
+                  className="text-gray700 hover:bg-gray50 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 hover:text-violet-600"
                 >
                   <Cog6ToothIcon
-                    className="text-gray400 h-6 w-6 shrink-0 group-hover:text-indigo-600"
+                    className="text-gray400 h-6 w-6 shrink-0 group-hover:text-violet-600"
                     aria-hidden="true"
                   />
                   Settings
