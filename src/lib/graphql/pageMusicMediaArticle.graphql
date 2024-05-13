@@ -1,0 +1,59 @@
+fragment ReferencePageMusicMediaArticleFields on PageMusicMediaArticle {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  mediaUrl
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+}
+
+fragment PageMusicMediaArticleFields on PageMusicMediaArticle {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  mediaUrl
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+  content {
+    json
+    links {
+      entries {
+        block {
+          ...RichImageFields
+        }
+      }
+    }
+  }
+}
+
+query pageMusicMediaArticle($slug: String!, $locale: String, $preview: Boolean) {
+  pageMusicMediaArticleCollection(limit: 1, where: { slug: $slug }, locale: $locale, preview: $preview) {
+    items {
+      ...PageMusicMediaArticleFields
+    }
+  }
+}

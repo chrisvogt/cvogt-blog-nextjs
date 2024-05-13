@@ -175,6 +175,7 @@ export type AssetLinkingCollections = {
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
+  pageMusicMediaArticleCollection?: Maybe<PageMusicMediaArticleCollection>;
   pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
 };
 
@@ -212,6 +213,14 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 
 
 export type AssetLinkingCollectionsPageBlogPostCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsPageMusicMediaArticleCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -319,6 +328,7 @@ export type ComponentAuthorLinkingCollections = {
   __typename?: 'ComponentAuthorLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
+  pageMusicMediaArticleCollection?: Maybe<PageMusicMediaArticleCollection>;
   pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
 };
 
@@ -340,6 +350,15 @@ export type ComponentAuthorLinkingCollectionsPageBlogPostCollectionArgs = {
 };
 
 
+export type ComponentAuthorLinkingCollectionsPageMusicMediaArticleCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentAuthorLinkingCollectionsPageMusicMediaArticleCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
 export type ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
@@ -349,6 +368,25 @@ export type ComponentAuthorLinkingCollectionsPagePhotoGalleryCollectionArgs = {
 };
 
 export enum ComponentAuthorLinkingCollectionsPageBlogPostCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum ComponentAuthorLinkingCollectionsPageMusicMediaArticleCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   PublishedDateAsc = 'publishedDate_ASC',
@@ -630,6 +668,8 @@ export type ComponentSeoLinkingCollections = {
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pageMusicCollection?: Maybe<PageMusicCollection>;
+  pageMusicMediaArticleCollection?: Maybe<PageMusicMediaArticleCollection>;
   pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
   pagePhotographyCollection?: Maybe<PagePhotographyCollection>;
 };
@@ -674,6 +714,24 @@ export type ComponentSeoLinkingCollectionsPageLandingCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageLandingCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageMusicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageMusicCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentSeoLinkingCollectionsPageMusicMediaArticleCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentSeoLinkingCollectionsPageMusicMediaArticleCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
 };
@@ -758,6 +816,42 @@ export enum ComponentSeoLinkingCollectionsPageLandingCollectionOrder {
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentSeoLinkingCollectionsPageMusicCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum ComponentSeoLinkingCollectionsPageMusicMediaArticleCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
 }
 
 export enum ComponentSeoLinkingCollectionsPagePhotoGalleryCollectionOrder {
@@ -1803,6 +1897,389 @@ export type PageLandingThisIsAnotherFieldResourcesInline = ResourceLink & {
   sys: ResourceSys;
 };
 
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusic = Entry & {
+  __typename?: 'PageMusic';
+  contentfulMetadata: ContentfulMetadata;
+  featuredPhotoGallery?: Maybe<PageMusicMediaArticle>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<PageMusicLinkingCollections>;
+  seoFields?: Maybe<ComponentSeo>;
+  slug?: Maybe<Scalars['String']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicFeaturedPhotoGalleryArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<PageMusicMediaArticleFilter>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicSeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentSeoFilter>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicSlugArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The index page for the music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusic) */
+export type PageMusicTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PageMusicCollection = {
+  __typename?: 'PageMusicCollection';
+  items: Array<Maybe<PageMusic>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageMusicFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageMusicFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageMusicFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredPhotoGallery?: InputMaybe<CfPageMusicMediaArticleNestedFilter>;
+  featuredPhotoGallery_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type PageMusicLinkingCollections = {
+  __typename?: 'PageMusicLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type PageMusicLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticle = Entry & {
+  __typename?: 'PageMusicMediaArticle';
+  author?: Maybe<ComponentAuthor>;
+  content?: Maybe<PageMusicMediaArticleContent>;
+  contentfulMetadata: ContentfulMetadata;
+  featuredImage?: Maybe<Asset>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<PageMusicMediaArticleLinkingCollections>;
+  mediaUrl?: Maybe<Array<Maybe<Scalars['String']>>>;
+  publishedDate?: Maybe<Scalars['DateTime']>;
+  seoFields?: Maybe<ComponentSeo>;
+  shortDescription?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleAuthorArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentAuthorFilter>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleContentArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleFeaturedImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleMediaUrlArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticlePublishedDateArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleSeoFieldsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  where?: InputMaybe<ComponentSeoFilter>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleShortDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleSlugArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Media articles for the Music section of my website. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageMusicMediaArticle) */
+export type PageMusicMediaArticleTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type PageMusicMediaArticleCollection = {
+  __typename?: 'PageMusicMediaArticleCollection';
+  items: Array<Maybe<PageMusicMediaArticle>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type PageMusicMediaArticleContent = {
+  __typename?: 'PageMusicMediaArticleContent';
+  json: Scalars['JSON'];
+  links: PageMusicMediaArticleContentLinks;
+};
+
+export type PageMusicMediaArticleContentAssets = {
+  __typename?: 'PageMusicMediaArticleContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type PageMusicMediaArticleContentEntries = {
+  __typename?: 'PageMusicMediaArticleContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type PageMusicMediaArticleContentLinks = {
+  __typename?: 'PageMusicMediaArticleContentLinks';
+  assets: PageMusicMediaArticleContentAssets;
+  entries: PageMusicMediaArticleContentEntries;
+  resources: PageMusicMediaArticleContentResources;
+};
+
+export type PageMusicMediaArticleContentResources = {
+  __typename?: 'PageMusicMediaArticleContentResources';
+  block: Array<PageMusicMediaArticleContentResourcesBlock>;
+  hyperlink: Array<PageMusicMediaArticleContentResourcesHyperlink>;
+  inline: Array<PageMusicMediaArticleContentResourcesInline>;
+};
+
+export type PageMusicMediaArticleContentResourcesBlock = ResourceLink & {
+  __typename?: 'PageMusicMediaArticleContentResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type PageMusicMediaArticleContentResourcesHyperlink = ResourceLink & {
+  __typename?: 'PageMusicMediaArticleContentResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type PageMusicMediaArticleContentResourcesInline = ResourceLink & {
+  __typename?: 'PageMusicMediaArticleContentResourcesInline';
+  sys: ResourceSys;
+};
+
+export type PageMusicMediaArticleFilter = {
+  AND?: InputMaybe<Array<InputMaybe<PageMusicMediaArticleFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<PageMusicMediaArticleFilter>>>;
+  author?: InputMaybe<CfComponentAuthorNestedFilter>;
+  author_exists?: InputMaybe<Scalars['Boolean']>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate_gt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_gte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedDate_lt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_lte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shortDescription_not?: InputMaybe<Scalars['String']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type PageMusicMediaArticleLinkingCollections = {
+  __typename?: 'PageMusicMediaArticleLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  pageMusicCollection?: Maybe<PageMusicCollection>;
+};
+
+
+export type PageMusicMediaArticleLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type PageMusicMediaArticleLinkingCollectionsPageMusicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageMusicMediaArticleLinkingCollectionsPageMusicCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum PageMusicMediaArticleLinkingCollectionsPageMusicCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum PageMusicMediaArticleOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  PublishedDateAsc = 'publishedDate_ASC',
+  PublishedDateDesc = 'publishedDate_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum PageMusicOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 /** Photo galleries for the Photography section of the site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pagePhotoGallery) */
 export type PagePhotoGallery = Entry & {
   __typename?: 'PagePhotoGallery';
@@ -2265,6 +2742,10 @@ export type Query = {
   pageHomeCollection?: Maybe<PageHomeCollection>;
   pageLanding?: Maybe<PageLanding>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
+  pageMusic?: Maybe<PageMusic>;
+  pageMusicCollection?: Maybe<PageMusicCollection>;
+  pageMusicMediaArticle?: Maybe<PageMusicMediaArticle>;
+  pageMusicMediaArticleCollection?: Maybe<PageMusicMediaArticleCollection>;
   pagePhotoGallery?: Maybe<PagePhotoGallery>;
   pagePhotoGalleryCollection?: Maybe<PagePhotoGalleryCollection>;
   pagePhotography?: Maybe<PagePhotography>;
@@ -2422,6 +2903,40 @@ export type QueryPageLandingCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<PageLandingFilter>;
+};
+
+
+export type QueryPageMusicArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageMusicCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageMusicOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageMusicFilter>;
+};
+
+
+export type QueryPageMusicMediaArticleArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryPageMusicMediaArticleCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<PageMusicMediaArticleOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<PageMusicMediaArticleFilter>;
 };
 
 
@@ -2634,6 +3149,60 @@ export type CfPageBlogPostNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type CfPageMusicMediaArticleNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfPageMusicMediaArticleNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfPageMusicMediaArticleNestedFilter>>>;
+  author_exists?: InputMaybe<Scalars['Boolean']>;
+  content_contains?: InputMaybe<Scalars['String']>;
+  content_exists?: InputMaybe<Scalars['Boolean']>;
+  content_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featuredImage_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  mediaUrl_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_exists?: InputMaybe<Scalars['Boolean']>;
+  publishedDate_gt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_gte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  publishedDate_lt?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_lte?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not?: InputMaybe<Scalars['DateTime']>;
+  publishedDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
+  seoFields_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
+  shortDescription_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_exists?: InputMaybe<Scalars['Boolean']>;
+  shortDescription_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  shortDescription_not?: InputMaybe<Scalars['String']>;
+  shortDescription_not_contains?: InputMaybe<Scalars['String']>;
+  shortDescription_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug?: InputMaybe<Scalars['String']>;
+  slug_contains?: InputMaybe<Scalars['String']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  slug_not?: InputMaybe<Scalars['String']>;
+  slug_not_contains?: InputMaybe<Scalars['String']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type CfPagePhotoGalleryNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfPagePhotoGalleryNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfPagePhotoGalleryNestedFilter>>>;
@@ -2739,7 +3308,7 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
   ) | null, content?: { __typename?: 'PageBlogPostContent', json: any, links: { __typename?: 'PageBlogPostContentLinks', entries: { __typename?: 'PageBlogPostContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PageMusic' } | { __typename?: 'PageMusicMediaArticle' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
       { __typename?: 'PageBlogPost' }
       & ReferencePageBlogPostFieldsFragment
     ) | null> } | null };
@@ -2830,6 +3399,54 @@ export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingColl
       & PageLandingFieldsFragment
     ) | null> } | null };
 
+export type ReferencePageMusicMediaArticleFieldsFragment = { __typename: 'PageMusicMediaArticle', slug?: string | null, publishedDate?: any | null, title?: string | null, mediaUrl?: Array<string | null> | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?: (
+    { __typename?: 'ComponentAuthor' }
+    & AuthorFieldsFragment
+  ) | null, featuredImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null };
+
+export type PageMusicMediaArticleFieldsFragment = { __typename: 'PageMusicMediaArticle', internalName?: string | null, slug?: string | null, mediaUrl?: Array<string | null> | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+    { __typename?: 'ComponentSeo' }
+    & SeoFieldsFragment
+  ) | null, author?: (
+    { __typename?: 'ComponentAuthor' }
+    & AuthorFieldsFragment
+  ) | null, featuredImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, content?: { __typename?: 'PageMusicMediaArticleContent', json: any, links: { __typename?: 'PageMusicMediaArticleContentLinks', entries: { __typename?: 'PageMusicMediaArticleContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
+          { __typename?: 'ComponentRichImage' }
+          & RichImageFieldsFragment
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PageMusic' } | { __typename?: 'PageMusicMediaArticle' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
+
+export type PageMusicMediaArticleQueryVariables = Exact<{
+  slug: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type PageMusicMediaArticleQuery = { __typename?: 'Query', pageMusicMediaArticleCollection?: { __typename?: 'PageMusicMediaArticleCollection', items: Array<(
+      { __typename?: 'PageMusicMediaArticle' }
+      & PageMusicMediaArticleFieldsFragment
+    ) | null> } | null };
+
+export type PageMusicMediaArticleCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  limit?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Array<InputMaybe<PageMusicMediaArticleOrder>> | InputMaybe<PageMusicMediaArticleOrder>>;
+  where?: InputMaybe<PageMusicMediaArticleFilter>;
+}>;
+
+
+export type PageMusicMediaArticleCollectionQuery = { __typename?: 'Query', pageMusicMediaArticleCollection?: { __typename?: 'PageMusicMediaArticleCollection', items: Array<(
+      { __typename?: 'PageMusicMediaArticle' }
+      & PageMusicMediaArticleFieldsFragment
+    ) | null> } | null };
+
 export type ReferencePagePhotoGalleryFieldsFragment = { __typename: 'PagePhotoGallery', slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?: (
     { __typename?: 'ComponentAuthor' }
     & AuthorFieldsFragment
@@ -2850,7 +3467,7 @@ export type PagePhotoGalleryFieldsFragment = { __typename: 'PagePhotoGallery', i
   ) | null, content?: { __typename?: 'PagePhotoGalleryContent', json: any, links: { __typename?: 'PagePhotoGalleryContentLinks', entries: { __typename?: 'PagePhotoGalleryContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
+        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageAbout' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageHome' } | { __typename?: 'PageLanding' } | { __typename?: 'PageMusic' } | { __typename?: 'PageMusicMediaArticle' } | { __typename?: 'PagePhotoGallery' } | { __typename?: 'PagePhotography' } | null> } } } | null };
 
 export type PagePhotoGalleryQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -3088,6 +3705,60 @@ export const PageLandingFieldsFragmentDoc = gql`
   greeting
 }
     `;
+export const ReferencePageMusicMediaArticleFieldsFragmentDoc = gql`
+    fragment ReferencePageMusicMediaArticleFields on PageMusicMediaArticle {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  publishedDate
+  title
+  mediaUrl
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+}
+    `;
+export const PageMusicMediaArticleFieldsFragmentDoc = gql`
+    fragment PageMusicMediaArticleFields on PageMusicMediaArticle {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  seoFields {
+    ...SeoFields
+  }
+  slug
+  author {
+    ...AuthorFields
+  }
+  mediaUrl
+  publishedDate
+  title
+  shortDescription
+  featuredImage {
+    ...ImageFields
+  }
+  content {
+    json
+    links {
+      entries {
+        block {
+          ...RichImageFields
+        }
+      }
+    }
+  }
+}
+    `;
 export const ReferencePagePhotoGalleryFieldsFragmentDoc = gql`
     fragment ReferencePagePhotoGalleryFields on PagePhotoGallery {
   __typename
@@ -3305,6 +3976,43 @@ ${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}
 ${AuthorFieldsFragmentDoc}`;
+export const PageMusicMediaArticleDocument = gql`
+    query pageMusicMediaArticle($slug: String!, $locale: String, $preview: Boolean) {
+  pageMusicMediaArticleCollection(
+    limit: 1
+    where: {slug: $slug}
+    locale: $locale
+    preview: $preview
+  ) {
+    items {
+      ...PageMusicMediaArticleFields
+    }
+  }
+}
+    ${PageMusicMediaArticleFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${AuthorFieldsFragmentDoc}
+${RichImageFieldsFragmentDoc}`;
+export const PageMusicMediaArticleCollectionDocument = gql`
+    query pageMusicMediaArticleCollection($locale: String, $preview: Boolean, $limit: Int, $order: [PageMusicMediaArticleOrder], $where: PageMusicMediaArticleFilter) {
+  pageMusicMediaArticleCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    order: $order
+    where: $where
+  ) {
+    items {
+      ...PageMusicMediaArticleFields
+    }
+  }
+}
+    ${PageMusicMediaArticleFieldsFragmentDoc}
+${SeoFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${AuthorFieldsFragmentDoc}
+${RichImageFieldsFragmentDoc}`;
 export const PagePhotoGalleryDocument = gql`
     query pagePhotoGallery($slug: String!, $locale: String, $preview: Boolean) {
   pagePhotoGalleryCollection(
@@ -3400,6 +4108,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     pageLandingCollection(variables?: PageLandingCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageLandingCollectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageLandingCollectionQuery>(PageLandingCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageLandingCollection', 'query');
+    },
+    pageMusicMediaArticle(variables: PageMusicMediaArticleQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageMusicMediaArticleQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageMusicMediaArticleQuery>(PageMusicMediaArticleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageMusicMediaArticle', 'query');
+    },
+    pageMusicMediaArticleCollection(variables?: PageMusicMediaArticleCollectionQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PageMusicMediaArticleCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<PageMusicMediaArticleCollectionQuery>(PageMusicMediaArticleCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pageMusicMediaArticleCollection', 'query');
     },
     pagePhotoGallery(variables: PagePhotoGalleryQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<PagePhotoGalleryQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PagePhotoGalleryQuery>(PagePhotoGalleryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pagePhotoGallery', 'query');

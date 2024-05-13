@@ -1,0 +1,13 @@
+query pageMusicMediaArticleCollection(
+  $locale: String
+  $preview: Boolean
+  $limit: Int
+  $order: [PageMusicMediaArticleOrder]
+  $where: PageMusicMediaArticleFilter
+) {
+  pageMusicMediaArticleCollection(limit: $limit, locale: $locale, preview: $preview, order: $order where: $where) {
+    items {
+      ...PageMusicMediaArticleFields
+    }
+  }
+}

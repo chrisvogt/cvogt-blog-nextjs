@@ -9,6 +9,9 @@
   "photographyPage": {
     "latestGalleries": "Latest galleries"
   },
+  "musicPage": {
+    "latestMusic": "Latest music"
+  },
   "common": {
     "regionalSettings": "Regional Settings",
     "homepage": "Homepage",
