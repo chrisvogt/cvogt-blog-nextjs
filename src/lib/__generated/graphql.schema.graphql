@@ -1021,6 +1021,7 @@ type PageHome implements Entry {
   greeting(locale: String): String
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PageHomeLinkingCollections
+  modules(locale: String): JSON
   seoFields(locale: String, preview: Boolean, where: ComponentSeoFilter): ComponentSeo
   sys: Sys!
   thisIsAnotherField(locale: String): PageHomeThisIsAnotherField
@@ -1053,6 +1054,7 @@ input PageHomeFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  modules_exists: Boolean
   seoFields: cfComponentSeoNestedFilter
   seoFields_exists: Boolean
   sys: SysFilter

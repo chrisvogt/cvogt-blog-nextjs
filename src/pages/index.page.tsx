@@ -24,6 +24,14 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
 
+      {page.modules && (
+        <Container>
+          <pre>
+            <code>{JSON.stringify(page.modules, null, 2)}</code>
+          </pre>
+        </Container>
+      )}
+
       {page.featuredBlogPost?.slug && (
         <Container>
           <Link href={`/${page.featuredBlogPost.slug}`}>
@@ -33,7 +41,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       )}
 
       <Container>
-        <div className="my-5 bg-colorTextLightest p-5 text-colorBlueLightest">{page.greeting}</div>
+        <div className="bg-colorTextLightest text-colorBlueLightest my-5 p-5">{page.greeting}</div>
       </Container>
 
       {/* <Container className="my-8  md:mb-10 lg:mb-16">

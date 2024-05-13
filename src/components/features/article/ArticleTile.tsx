@@ -13,11 +13,13 @@ interface ArticleTileProps extends HTMLProps<HTMLDivElement> {
 }
 
 export const ArticleTile = ({ article, className }: ArticleTileProps) => {
-  const { title, publishedDate } = article;
+  const { __typename, title, publishedDate } = article;
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
 
+  const linkBase = __typename === 'PageBlogPost' ? '/blog' : '/photography';
+
   return (
-    <Link className="flex flex-col" href={`/blog/${article.slug}`}>
+    <Link className="flex flex-col" href={`${linkBase}/${article.slug}`}>
       <div
         className={twMerge(
           'border-gray300 flex flex-1 flex-col overflow-hidden rounded-2xl border shadow-lg',

@@ -1473,6 +1473,7 @@ export type PageHome = Entry & {
   greeting?: Maybe<Scalars['String']>;
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageHomeLinkingCollections>;
+  modules?: Maybe<Scalars['JSON']>;
   seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
   thisIsAnotherField?: Maybe<PageHomeThisIsAnotherField>;
@@ -1502,6 +1503,12 @@ export type PageHomeInternalNameArgs = {
 /** The home page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageHome) */
 export type PageHomeLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** The home page for my site. [See type definition](https://app.contentful.com/spaces/53k0m0g925rw/content_types/pageHome) */
+export type PageHomeModulesArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -1546,6 +1553,7 @@ export type PageHomeFilter = {
   internalName_not?: InputMaybe<Scalars['String']>;
   internalName_not_contains?: InputMaybe<Scalars['String']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  modules_exists?: InputMaybe<Scalars['Boolean']>;
   seoFields?: InputMaybe<CfComponentSeoNestedFilter>;
   seoFields_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
@@ -2762,7 +2770,7 @@ export type PageBlogPostCollectionQuery = { __typename?: 'Query', pageBlogPostCo
       & PageBlogPostFieldsFragment
     ) | null> } | null };
 
-export type PageHomeFieldsFragment = { __typename: 'PageHome', internalName?: string | null, greeting?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+export type PageHomeFieldsFragment = { __typename: 'PageHome', internalName?: string | null, greeting?: string | null, modules?: any | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, featuredBlogPost?: (
@@ -3060,6 +3068,7 @@ export const PageHomeFieldsFragmentDoc = gql`
     ...ReferencePageBlogPostFields
   }
   greeting
+  modules
 }
     `;
 export const PageLandingFieldsFragmentDoc = gql`

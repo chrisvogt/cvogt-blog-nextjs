@@ -12,6 +12,7 @@ fragment PageHomeFields on PageHome {
     ...ReferencePageBlogPostFields
   }
   greeting
+  modules
 }
 
 query pageHome($locale: String, $preview: Boolean) {
